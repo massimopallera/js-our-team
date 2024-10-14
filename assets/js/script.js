@@ -3,6 +3,7 @@ console.log('it works')
 
 //DOM elements
 const rowEl = document.getElementById('members')
+const formEl = document.querySelector('form')
 
 //variables
 let finalMarkup = ''
@@ -72,6 +73,28 @@ function generateMarkUp(item){
   </div>
   `
 }
+
+//EventListeners
+formEl.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const name = document.getElementById('name').value
+  const role = document.getElementById('role').value
+  const email = document.getElementById('email').value
+  const image = document.getElementById('image').value
+
+  const newMember = {
+    email,
+    name,
+    role,
+    image
+  }
+
+  const markup = generateMarkUp(newMember)
+
+  rowEl.insertAdjacentHTML('beforeend',markup)
+
+})
 
 
 //main
