@@ -2,8 +2,10 @@
 console.log('it works')
 
 //DOM elements
+const rowEl = document.getElementById('members')
 
 //variables
+let finalMarkup = ''
 
 //members object
 const teamMembers = [
@@ -46,5 +48,38 @@ const teamMembers = [
 ];
 
 //functions
+function generateMarkUp(item){
+
+  const {img, name, role, email} = item
+
+  return `
+  <div class="col">
+    <div class="card bg-black text-white">
+    <div class="d-flex">
+
+      <div>
+        <img src="./assets/${img}" alt="" class="img-fluid">
+      </div>
+
+      <div class="py-2 px-3 d-flex flex-column justify-content-between">
+        <h3>${name}</h3>
+        <h4>${role}</h4>
+        <p class="text-info">${email}</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+  `
+}
+
 
 //main
+for (let i = 0; i < teamMembers.length; i++){
+  const member = teamMembers[i]
+  const markup = generateMarkUp(member)
+
+  finalMarkup += markup
+}
+
+rowEl.insertAdjacentHTML('beforeend', finalMarkup)
