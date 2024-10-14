@@ -53,7 +53,7 @@ function generateMarkUp(item){
   const {img, name, role, email} = item
 
   return `
-  <div class="col">
+  <div class="col-xl-4 col-lg-6 col-sm-12">
     <div class="card bg-black text-white">
     <div class="d-flex">
 
